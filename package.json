@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx nodemon",
-    "start": "node index.js",
-    "build": "tsc -p .",
+    "start": "nodemon index.js",
+    "build": "tsc",
     "data:imp": "npx ts-node ./src/seeding.ts -h",
     "data:del": "npx ts-node ./src/seeding.ts -d"
   },
