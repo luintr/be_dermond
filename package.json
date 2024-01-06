@@ -8,8 +8,7 @@
     "start": "node index.js",
     "build": "tsc -p .",
     "data:imp": "npx ts-node ./src/seeding.ts -h",
-    "data:del": "npx ts-node ./src/seeding.ts -d",
-    "vercel-build": "npm run build"
+    "data:del": "npx ts-node ./src/seeding.ts -d"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
