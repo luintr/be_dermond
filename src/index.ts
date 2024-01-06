@@ -8,6 +8,7 @@ import productRoute from './routes/productRoute'
 import userRoute from './routes/userRoute'
 import orderRoute from './routes/orderRoute'
 import { errorHandler, notFound } from './middleware/errorHandler';
+import http from 'http';
 
 require('dotenv').config()
 const app = express()
@@ -15,7 +16,7 @@ const app = express()
 connectDB()
 
 app.use(cors());
-app.set("port", process.env.PORT);
+// app.set("port", process.env.PORT);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
@@ -33,10 +34,14 @@ app.get('api/config/paypal', (req, res) => res.send({ clientId: process.env.PAYP
 app.use(notFound)
 app.use(errorHandler)
 
-const port = app.get("port");
+// const port = app.get("port");
 
-const server = app.listen(port, () =>
-  console.log(`Server started on port ${port}`)
-);
+// const server = app.listen(port, () =>
+//   console.log(`Server started on port ${port}`)
+// );
 
-export default server;
+const httpApp = new http.Server(app);
+
+httpApp.listen(process.env.PORT, () => { })
+
+export default httpApp;
