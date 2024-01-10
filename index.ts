@@ -34,15 +34,8 @@ app.get('api/config/paypal', (req, res) => res.send({ clientId: process.env.PAYP
 app.use(notFound)
 app.use(errorHandler)
 
-const port = app.get("port");
+const httpApp = new http.Server(app);
 
-const server = app.listen(port, () =>
-  console.log(`Server started on port ${port}`)
-);
+httpApp.listen(process.env.PORT, () => { })
 
-// const httpApp = new http.Server(app);
-
-// httpApp.listen(process.env.PORT, () => { })
-
-// export default httpApp;
-export default server;
+export default httpApp;
