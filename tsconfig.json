@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es2016",
     "module": "commonjs",
-    "lib": ["es6"],
-    "allowJs": true,
-    "outDir": "build",
-    "rootDir": "src",
-    "strict": true,
-    "noImplicitAny": true,
+    "rootDir": "./",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "newLine": "crlf",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "baseUrl": "."
   },
   "include": ["./src/*/"]
 }
