@@ -4,13 +4,13 @@
     {
       "src": "index.ts",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["dist/*"] }
+      "config": { "includeFiles": ["build/*"] }
     }
   ],
   "routes": [
     {
       "src": "/(.)",
-      "dest": "src/index.ts"
+      "dest": "index.ts"
     }
   ]
 }

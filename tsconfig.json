@@ -7,12 +7,12 @@
     "rootDir": "./",
     "moduleResolution": "Node",
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "build",
     "newLine": "crlf",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "baseUrl": "."
   },
-  "include": ["./src/*/"]
+  "include": ["./src/*/", "index.ts"]
 }
