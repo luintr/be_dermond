@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 
 app.get("/", (req, res) => {
-  res.send('Hello, this is your Express app!');
+  res.send("API Running");
 });
 
 app.use('/api/products', productRoute)
@@ -34,10 +34,11 @@ app.get('api/config/paypal', (req, res) => res.send({ clientId: process.env.PAYP
 app.use(notFound)
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const port = app.get("port");
+
+// const server = app.listen(port, () =>
+//   console.log(`Server started on port ${port}`)
+// );
 
 const httpApp = new http.Server(app);
 

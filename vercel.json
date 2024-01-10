@@ -1,8 +1,15 @@
 {
-  "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/(.*)",
-      "dest": "index.ts"
+      "src": "build/index.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": ["build/**"] }
     }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/build/index.js" },
+    { "src": "/(.*)", "dest": "/" }
   ]
 }
