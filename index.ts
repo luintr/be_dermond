@@ -33,7 +33,7 @@ app.use('/api/orders', orderRoute)
 app.use(notFound)
 app.use(errorHandler)
 
-const httpApp = new http.Server(app);
+const httpApp = http.createServer(app);
 
 const PORT = process.env.PORT || 3000;
 httpApp.listen(PORT, () => {
