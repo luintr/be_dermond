@@ -3,11 +3,11 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import connectDB from './config/db';
-import productRoute from './routes/productRoute';
-import userRoute from './routes/userRoute';
-import orderRoute from './routes/orderRoute';
-import { errorHandler, notFound } from './middleware/errorHandler';
+import connectDB from './src/config/db';
+import productRoute from './src/routes/productRoute';
+import userRoute from './src/routes/userRoute';
+import orderRoute from './src/routes/orderRoute';
+import { errorHandler, notFound } from './src/middleware/errorHandler';
 import http from 'http';
 
 require('dotenv').config();
