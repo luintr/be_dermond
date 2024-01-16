@@ -1,4 +1,3 @@
-import path from 'path';
 import bodyParser from 'body-parser';
 import express from 'express';
 import cookieParser from 'cookie-parser';
