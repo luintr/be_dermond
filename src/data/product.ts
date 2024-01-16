@@ -4,7 +4,7 @@ export type IProduct = {
   image: string,
   description: string,
   size: 'S' | 'M' | 'L',
-  color: 'be' | 'brown' | 'black',
+  color: 'be' | 'brown' | 'black' | 'white',
   brand: string,
   category: string,
   price: number,
