@@ -7,7 +7,7 @@ import productRoute from './src/routes/productRoute';
 import userRoute from './src/routes/userRoute';
 import orderRoute from './src/routes/orderRoute';
 import { errorHandler, notFound } from './src/middleware/errorHandler';
-import http from 'http';
+// import http from 'http';
 
 require('dotenv').config();
 const app = express();
@@ -30,11 +30,16 @@ app.use('/api/orders', orderRoute);
 app.use(notFound);
 app.use(errorHandler);
 
-const httpApp = http.createServer(app);
+// const httpApp = http.createServer(app);
+
+// const PORT = process.env.PORT || 3000;
+// httpApp.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
 
 const PORT = process.env.PORT || 3000;
-httpApp.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-export default httpApp;
+export default app;
