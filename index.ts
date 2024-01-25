@@ -7,7 +7,7 @@ import productRoute from './src/routes/productRoute';
 import userRoute from './src/routes/userRoute';
 import orderRoute from './src/routes/orderRoute';
 import {errorHandler, notFound} from './src/middleware/errorHandler';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 // import http from 'http';
 
 require('dotenv').config();
@@ -19,7 +19,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 
 app.get('/', (req, res) => {
     res.send('API Running');
