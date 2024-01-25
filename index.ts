@@ -6,7 +6,8 @@ import connectDB from './src/config/db';
 import productRoute from './src/routes/productRoute';
 import userRoute from './src/routes/userRoute';
 import orderRoute from './src/routes/orderRoute';
-import { errorHandler, notFound } from './src/middleware/errorHandler';
+import {errorHandler, notFound} from './src/middleware/errorHandler';
+import morgan from 'morgan';
 // import http from 'http';
 
 require('dotenv').config();
@@ -16,11 +17,12 @@ connectDB();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+app.use(morgan('combined'));
 
 app.get('/', (req, res) => {
-  res.send('API Running');
+    res.send('API Running');
 });
 
 app.use('/api/products', productRoute);
@@ -39,7 +41,7 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
 
 export default app;
