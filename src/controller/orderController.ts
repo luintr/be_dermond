@@ -6,7 +6,7 @@ import Order from "../model/orderModel";
 // @route     POST /api/orders
 // @access    Private
 export const addOrderItems = asyncHandler(async (req: Request, res: Response) => {
-  const { orderItems, shippingAddress, paymentMethod, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body
+  const { orderItems, shippingAddress, paymentMethod, itemsPrice, taxPrice, shippingPrice, totalPrice, number } = req.body
 
   if (orderItems && orderItems.length === 0) {
     res.status(400)
@@ -20,6 +20,7 @@ export const addOrderItems = asyncHandler(async (req: Request, res: Response) =>
       })),
       // @ts-ignore:next-line
       user: req.user._id,
+      number,
       shippingAddress,
       paymentMethod,
       itemsPrice,
