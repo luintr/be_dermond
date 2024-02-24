@@ -16,8 +16,6 @@ export const getProducts = asyncHandler(async (req: any, res: any) => {
 		let sortBy = {};
 		if (sort[1]) {
 			sortBy[sort[0]] = sort[1];
-		} else {
-			sortBy[sort[0]] = "asc";
 		}
 
 		const products = await Product.find({ name: { $regex: search, $options: "i" } })
@@ -33,7 +31,7 @@ export const getProducts = asyncHandler(async (req: any, res: any) => {
 			total,
 			page: page + 1,
 			limit,
-			products,
+			data: products,
 		};
 
 		res.status(200).json(response);
