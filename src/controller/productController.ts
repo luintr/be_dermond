@@ -5,12 +5,42 @@ import Product from "../model/productModel";
 // @route     GET /api/products
 // @access    Public
 export const getProducts = asyncHandler(async (req: any, res: any) => {
-  const products = await Product.find({})
-  if (products) {
-    res.send({ data: products })
-  } else {
-    throw new Error('Something went wrong')
-  }
+  try {
+		const page = parseInt(req.query.page) - 1 || 0;
+		const limit = parseInt(req.query.limit) || 5;
+		const search = req.query.search || "";
+		let sort = req.query.sort || "price";
+
+		req.query.sort ? (sort = req.query.sort.split(",")) : (sort = [sort]);
+
+		let sortBy = {};
+		if (sort[1]) {
+			sortBy[sort[0]] = sort[1];
+		} else {
+			sortBy[sort[0]] = "asc";
+		}
+
+		const products = await Product.find({ name: { $regex: search, $options: "i" } })
+			.sort(sortBy)
+			.skip(page * limit)
+			.limit(limit);
+
+		const total = await Product.countDocuments({
+			name: { $regex: search, $options: "i" },
+		});
+
+		const response = {
+			total,
+			page: page + 1,
+			limit,
+			products,
+		};
+
+		res.status(200).json(response);
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ message: "Internal Server Error" });
+	}
 })
 
 // @desc      Fetch a Product
